@@ -107,6 +107,7 @@ def convert_rows(rows: list, fn_crosswalk: dict):
 def get_vocab(fieldname: str):
     """Get available vocabulary."""
     global vocabularies
+    vocab = None
     try:
         vocab = vocabularies[fieldname]
     except KeyError:
@@ -143,7 +144,7 @@ def validate_objects(objs: list, halt_on_error: bool):
                 if not isinstance(v, int):
                     raise ValueError("gack")
             vocab = get_vocab(k)
-            if vocab:
+            if vocab is not None:
                 try:
                     vocab[v]
                 except KeyError:
