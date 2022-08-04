@@ -125,7 +125,7 @@ def get_vocab(fieldname: str):
 
 
 def validate_objects(objs: list, halt_on_error: bool):
-    skip_fields = {"id-in-this-doc", "p-number"}
+    skip_fields = {"id-in-this-doc", "p-number", "publication-labels", "museum-labels"}
     for i, obj in enumerate(objs):
         for k, v in obj.items():
             if k in skip_fields:
