@@ -8,6 +8,7 @@
 Convert 'combined' data in CSV+UTF8 to JSON with basic cleanup
 """
 
+from curses import raw
 from airtight.cli import configure_commandline
 import csv
 import json
@@ -23,6 +24,7 @@ vocabularies = dict()
 
 DEFAULT_LOG_LEVEL = logging.WARNING
 OPTIONAL_ARGUMENTS = [
+    ["-x", "--halt", False, "halt on validation or other major error", False],
     [
         "-l",
         "--loglevel",
@@ -72,7 +74,7 @@ def normalize_fieldnames(raw: list):
 
 def convert_rows(rows: list, fn_crosswalk: dict):
     """Convert a list of dictionaries to a list of JSON-compatible objects using the crosswalk"""
-    objects = list()
+    objs = list()
     for row in rows:
         obj = dict()
         for k, v in row.items():
@@ -88,8 +90,8 @@ def convert_rows(rows: list, fn_crosswalk: dict):
                         obj[obj_k].append(clean_v)
                     else:
                         obj[obj_k] = [previous_value, clean_v]
-        objects.append(obj)
-    return objects
+        objs.append(obj)
+    return objs
 
 
 def get_vocab(fieldname: str):
@@ -98,29 +100,46 @@ def get_vocab(fieldname: str):
     try:
         vocab = vocabularies[fieldname]
     except KeyError:
+        vpath = (
+            Path(__file__).parent.parent / "data" / "vocabularies" / f"{fieldname}.json"
+        )
+        logger.debug(vpath)
         try:
-            vfp = open(
-                Path(__file__).parent / "data" / "vocabularies" / f"{fieldname}.json",
-                "r",
-                encoding="utf-8",
-            )
+            vfp = open(vpath, "r", encoding="utf-8")
         except FileNotFoundError:
             logger.warning(f"No vocabulary defined for fieldname '{fieldname}'.")
             vocabularies[fieldname] = None
         else:
-            vocabularies[fieldname] = json.load(vfp)
+            raw_vocab = json.load(vfp)
             vfp.close()
             del vfp
+            if isinstance(raw_vocab, dict):
+                raise RuntimeError(
+                    f"Expected list for vocabulary '{fieldname}' but read key:value pairs from file."
+                )
+            else:
+                vocabularies[fieldname] = {v: True for v in raw_vocab}
         vocab = vocabularies[fieldname]
+    logger.debug(pformat(vocab, indent=4))
     return vocab
 
 
-def validate_objects(objects: list):
-    for obj in objects:
+def validate_objects(objs: list, halt_on_error: bool):
+    skip_fields = {"id-in-this-doc", "p-number"}
+    for i, obj in enumerate(objs):
         for k, v in obj.items():
+            if k in skip_fields:
+                continue
             vocab = get_vocab(k)
             if vocab:
-                pass
+                try:
+                    vocab[v]
+                except KeyError:
+                    msg = f"Invalid value '{v}' in field '{k}' for object at sequence {i}."
+                    if halt_on_error:
+                        raise ValueError(msg)
+                    else:
+                        logger.error(msg)
 
 
 def main(**kwargs):
@@ -139,8 +158,8 @@ def main(**kwargs):
     logger.debug(
         f"normalized fieldnames crosswalk for JSON: {pformat(fn_csv2json, indent='4')}"
     )
-    objects = convert_rows(rows, fn_csv2json)
-    validate_objects(objects)
+    objs = convert_rows(rows, fn_csv2json)
+    validate_objects(objs, kwargs["halt"])
 
     if kwargs["pretty"]:
         indent = 4
@@ -148,7 +167,7 @@ def main(**kwargs):
     else:
         indent = None
         sort_keys = False
-    s = json.dumps(objects, ensure_ascii=False, indent=indent, sort_keys=sort_keys)
+    s = json.dumps(objs, ensure_ascii=False, indent=indent, sort_keys=sort_keys)
     print(s)
 
 
