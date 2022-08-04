@@ -20,6 +20,8 @@ from slugify import slugify
 
 logger = logging.getLogger(__name__)
 vocabularies = dict()
+skip_fields = {"id-in-this-doc", "p-number", "publication-labels", "museum-labels"}
+integer_fields = {"king-order"}
 
 
 DEFAULT_LOG_LEVEL = logging.WARNING
@@ -75,11 +77,19 @@ def normalize_fieldnames(raw: list):
 def convert_rows(rows: list, fn_crosswalk: dict):
     """Convert a list of dictionaries to a list of JSON-compatible objects using the crosswalk"""
     objs = list()
-    for row in rows:
+    for i, row in enumerate(rows):
         obj = dict()
         for k, v in row.items():
             clean_v = " ".join(v.strip().split())
             obj_k = fn_crosswalk[k]
+            if obj_k in integer_fields:
+                try:
+                    clean_v = int(clean_v)
+                except ValueError:
+                    logger.error(
+                        f"Unexpected non-integer value for field '{k}' in row {i}: '{clean_v}'"
+                    )
+                continue
             if clean_v:
                 try:
                     previous_value = obj[obj_k]
@@ -125,11 +135,13 @@ def get_vocab(fieldname: str):
 
 
 def validate_objects(objs: list, halt_on_error: bool):
-    skip_fields = {"id-in-this-doc", "p-number", "publication-labels", "museum-labels"}
     for i, obj in enumerate(objs):
         for k, v in obj.items():
             if k in skip_fields:
                 continue
+            if k in integer_fields:
+                if not isinstance(v, int):
+                    raise ValueError("gack")
             vocab = get_vocab(k)
             if vocab:
                 try:
