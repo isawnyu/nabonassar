@@ -22,7 +22,18 @@ logger = logging.getLogger(__name__)
 vocabularies = dict()
 converters = dict()
 convert_fields = {"king"}
-skip_fields = {"id-in-this-doc", "p-number", "publication-labels", "museum-labels"}
+skip_fields = {
+    "archive",
+    "id-in-this-doc",
+    "location-written",
+    "museum-labels",
+    "other-text-and-tablet-info",
+    "p-number",
+    "provenience",
+    "publication-labels",
+    "tablet-info-notes",
+    "text-content-detail",
+}
 integer_fields = {"king-order"}
 
 
