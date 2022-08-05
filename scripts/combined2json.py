@@ -135,7 +135,7 @@ def convert_rows(rows: list, fn_crosswalk: dict):
                         logger.error(
                             f"Unexpected non-integer value for field '{k}' in row {i}: '{clean_v}'"
                         )
-                    continue
+                        continue
                 if obj_k in convert_fields:
                     logger.debug(f"{obj_k} before: {clean_v}")
                     clean_v = convert_field(obj_k, clean_v)
