@@ -1,0 +1,23 @@
+{
+    "At Least": {
+        "conversion": "At Least"
+    },
+    "At least": {
+        "conversion": "At Least"
+    },
+    "Broken": {
+        "conversion": "Broken"
+    },
+    "Either or": {
+        "conversion": "Either or"
+    },
+    "Partially Broken": {
+        "conversion": "Partially Broken"
+    },
+    "Restored": {
+        "conversion": "Restored"
+    },
+    "Uncertain": {
+        "conversion": "Uncertain"
+    }
+}
