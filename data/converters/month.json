@@ -1,0 +1,114 @@
+{
+    "01": {
+        "conversion": "01"
+    },
+    "1": {
+        "conversion": "01"
+    },
+    "01?": {
+        "conversion": "01"
+    },
+    "02": {
+        "conversion": "02"
+    },
+    "2": {
+        "conversion": "02"
+    },
+    "02(?)": {
+        "conversion": "02"
+    },
+    "03": {
+        "conversion": "03"
+    },
+    "3": {
+        "conversion": "03"
+    },
+    "4": {
+        "conversion": "04"
+    },
+    "04": {
+        "conversion": "04"
+    },
+    "04?": {
+        "conversion": "04"
+    },
+    "05": {
+        "conversion": "05"
+    },
+    "5": {
+        "conversion": "05"
+    },
+    "05?": {
+        "conversion": "05"
+    },
+    "06": {
+        "conversion": "06"
+    },
+    "06?": {
+        "conversion": "06"
+    },
+    "[06]": {
+        "conversion": "06"
+    },
+    "6": {
+        "conversion": "06"
+    },
+    "06INT": {
+        "conversion": "06INT"
+    },
+    "6INT": {
+        "conversion": "06INT"
+    },
+    "07": {
+        "conversion": "07"
+    },
+    "7": {
+        "conversion": "07"
+    },
+    "07?": {
+        "conversion": "07"
+    },
+    "08": {
+        "conversion": "08"
+    },
+    "8": {
+        "conversion": "08"
+    },
+    "09": {
+        "conversion": "09"
+    },
+    "9": {
+        "conversion": "09"
+    },
+    "10": {
+        "conversion": "10"
+    },
+    "11": {
+        "conversion": "11"
+    },
+    "12": {
+        "conversion": "12"
+    },
+    "12?": {
+        "conversion": "12"
+    },
+    "12INT": {
+        "conversion": "12INT"
+    },
+    "12INT?": {
+        "conversion": "12INT"
+    },
+    "12?INT": {
+        "conversion": "12INT"
+    },
+    "6INT/12INT": {
+        "conversion": "6INT/12INT"
+    },
+    "--": {},
+    "00": {},
+    "xx": {},
+    "[x]": {},
+    "14?": {},
+    "19": {},
+    "13": {}
+}
