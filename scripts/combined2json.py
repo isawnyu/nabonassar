@@ -137,7 +137,11 @@ def convert_rows(rows: list, fn_crosswalk: dict):
                         )
                     continue
                 if obj_k in convert_fields:
+                    logger.debug(f"{obj_k} before: {clean_v}")
                     clean_v = convert_field(obj_k, clean_v)
+                    logger.debug(f"{obj_k} after: {clean_v}")
+                    if clean_v is None:
+                        continue
                 try:
                     previous_value = obj[obj_k]
                 except KeyError:
