@@ -21,7 +21,7 @@ from slugify import slugify
 logger = logging.getLogger(__name__)
 vocabularies = dict()
 converters = dict()
-convert_fields = {"king"}
+convert_fields = {"king", "regnal-year"}
 skip_fields = {
     "archive",
     "id-in-this-doc",
@@ -103,6 +103,7 @@ def get_converter(fieldname):
             logger.warning(f"No converter defined for fieldname '{fieldname}'.")
             converters[fieldname] = None
         else:
+            logger.warning(f"Loading from file: converter for {fieldname}.")
             raw_converter = json.load(vfp)
             vfp.close()
             del vfp
