@@ -20,6 +20,8 @@ from slugify import slugify
 
 logger = logging.getLogger(__name__)
 vocabularies = dict()
+converters = dict()
+convert_fields = {"king"}
 skip_fields = {"id-in-this-doc", "p-number", "publication-labels", "museum-labels"}
 integer_fields = {"king-order"}
 
@@ -74,6 +76,49 @@ def normalize_fieldnames(raw: list):
     return dict(zip(raw, packaged))
 
 
+def get_converter(fieldname):
+    global converters
+    converter = None
+    try:
+        converter = converters[fieldname]
+    except KeyError:
+        cpath = (
+            Path(__file__).parent.parent / "data" / "converters" / f"{fieldname}.json"
+        )
+        logger.debug(cpath)
+        try:
+            vfp = open(cpath, "r", encoding="utf-8")
+        except FileNotFoundError:
+            logger.warning(f"No converter defined for fieldname '{fieldname}'.")
+            converters[fieldname] = None
+        else:
+            raw_converter = json.load(vfp)
+            vfp.close()
+            del vfp
+            if isinstance(raw_converter, dict):
+                converters[fieldname] = raw_converter
+            else:
+                raise RuntimeError("phooey")
+        converter = converters[fieldname]
+    logger.debug(pformat(converter, indent=4))
+    return converter
+
+
+def convert_field(fieldname, value):
+    converter = get_converter(fieldname)
+    try:
+        converter_object = converter[value]
+    except KeyError:
+        msg = f"Unconvertable value '{value}' in field '{fieldname}'."
+        raise ValueError(msg)
+    else:
+        try:
+            new_value = converter_object["conversion"]
+        except KeyError:
+            new_value = None
+    return new_value
+
+
 def convert_rows(rows: list, fn_crosswalk: dict):
     """Convert a list of dictionaries to a list of JSON-compatible objects using the crosswalk"""
     objs = list()
@@ -81,16 +126,18 @@ def convert_rows(rows: list, fn_crosswalk: dict):
         obj = dict()
         for k, v in row.items():
             clean_v = " ".join(v.strip().split())
-            obj_k = fn_crosswalk[k]
-            if obj_k in integer_fields:
-                try:
-                    clean_v = int(clean_v)
-                except ValueError:
-                    logger.error(
-                        f"Unexpected non-integer value for field '{k}' in row {i}: '{clean_v}'"
-                    )
-                continue
             if clean_v:
+                obj_k = fn_crosswalk[k]
+                if obj_k in integer_fields:
+                    try:
+                        clean_v = int(clean_v)
+                    except ValueError:
+                        logger.error(
+                            f"Unexpected non-integer value for field '{k}' in row {i}: '{clean_v}'"
+                        )
+                    continue
+                if obj_k in convert_fields:
+                    clean_v = convert_field(obj_k, clean_v)
                 try:
                     previous_value = obj[obj_k]
                 except KeyError:
@@ -125,9 +172,7 @@ def get_vocab(fieldname: str):
             vfp.close()
             del vfp
             if isinstance(raw_vocab, dict):
-                raise RuntimeError(
-                    f"Expected list for vocabulary '{fieldname}' but read key:value pairs from file."
-                )
+                vocabularies[fieldname] = raw_vocab
             else:
                 vocabularies[fieldname] = {v: True for v in raw_vocab}
         vocab = vocabularies[fieldname]

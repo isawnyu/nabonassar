@@ -1,0 +1,429 @@
+{
+    "Alx 3": {
+        "label": "Alexander the Great",
+        "conversion": "Q8409",
+        "uri": "http://www.wikidata.org/entity/Q8409"
+    },
+    "Alex III": {
+        "label": "Alexander the Great",
+        "conversion": "Q8409",
+        "uri": "http://www.wikidata.org/entity/Q8409"
+    },
+    "Alx 4": {
+        "label": "Alexander IV",
+        "conversion": "Q207847",
+        "uri": "https://www.wikidata.org/wiki/Q207847"
+    },
+    "<Alx 4>": {
+        "label": "Alexander IV",
+        "conversion": "Q207847",
+        "uri": "https://www.wikidata.org/wiki/Q207847"
+    },
+    "Ami": {
+        "label": "Amel-Marduk",
+        "conversion": "Q313234",
+        "uri": "http://www.wikidata.org/entity/Q313234"
+    },
+    "AMI": {
+        "label": "Amel-Marduk",
+        "conversion": "Q313234",
+        "uri": "http://www.wikidata.org/entity/Q313234"
+    },
+    "AMi": {
+        "label": "Amel-Marduk",
+        "conversion": "Q313234",
+        "uri": "http://www.wikidata.org/entity/Q313234"
+    },
+    "Ant1": {
+        "label": "Antiochus I Soter",
+        "conversion": "Q211488",
+        "uri": "http://www.wikidata.org/entity/Q211488"
+    },
+    "Art": {
+        "label": "Artaxerxes I",
+        "conversion": "Q189689",
+        "uri": "http://www.wikidata.org/entity/Q189689"
+    },
+    "Art?": {
+        "label": "Artaxerxes I",
+        "conversion": "Q189689",
+        "uri": "http://www.wikidata.org/entity/Q189689"
+    },
+    "[Art]": {
+        "label": "Artaxerxes I",
+        "conversion": "Q189689",
+        "uri": "http://www.wikidata.org/entity/Q189689"
+    },
+    "ARtI": {
+        "label": "Artaxerxes I",
+        "conversion": "Q189689",
+        "uri": "http://www.wikidata.org/entity/Q189689"
+    },
+    "ArtI": {
+        "label": "Artaxerxes I",
+        "conversion": "Q189689",
+        "uri": "http://www.wikidata.org/entity/Q189689"
+    },
+    "Art 1": {
+        "label": "Artaxerxes I",
+        "conversion": "Q189689",
+        "uri": "http://www.wikidata.org/entity/Q189689"
+    },
+    "Art 1?": {
+        "label": "Artaxerxes I",
+        "conversion": "Q189689",
+        "uri": "http://www.wikidata.org/entity/Q189689"
+    },
+    "Art I": {
+        "label": "Artaxerxes I",
+        "conversion": "Q189689",
+        "uri": "http://www.wikidata.org/entity/Q189689"
+    },
+    "ArtII": {
+        "label": "Artaxerxes II",
+        "conversion": "Q188472",
+        "uri": "http://www.wikidata.org/entity/Q188472"
+    },
+    "Art II": {
+        "label": "Artaxerxes II",
+        "conversion": "Q188472",
+        "uri": "http://www.wikidata.org/entity/Q188472"
+    },
+    "Art 2": {
+        "label": "Artaxerxes II",
+        "conversion": "Q188472",
+        "uri": "http://www.wikidata.org/entity/Q188472"
+    },
+    "(Art 2)": {
+        "label": "Artaxerxes II",
+        "conversion": "Q188472",
+        "uri": "http://www.wikidata.org/entity/Q188472"
+    },
+    "Art 3": {
+        "label": "Artaxerxes III",
+        "conversion": "Q192867",
+        "uri": "https://www.wikidata.org/wiki/Q192867"
+    },
+    "Art III": {
+        "label": "Artaxerxes III",
+        "conversion": "Q192867",
+        "uri": "https://www.wikidata.org/wiki/Q192867"
+    },
+    "Art 4": {
+        "label": "Artaxerxes IV",
+        "alternate_names": [
+            "Arses of Persia"
+        ],
+        "conversion": "Q260783",
+        "uri": "https://www.wikidata.org/wiki/Q260783"
+    },
+    "Asb": {
+        "label": "Ashurbanipal",
+        "conversion": "Q171191",
+        "uri": "http://www.wikidata.org/entity/Q171191"
+    },
+    "Bar": {
+        "label": "Bardiya",
+        "conversion": "Q242267",
+        "uri": "http://www.wikidata.org/entity/Q242267"
+    },
+    "Bard": {
+        "label": "Bardiya",
+        "conversion": "Q242267",
+        "uri": "http://www.wikidata.org/entity/Q242267"
+    },
+    "Barz": {
+        "label": "Bardiya",
+        "conversion": "Q242267",
+        "uri": "http://www.wikidata.org/entity/Q242267"
+    },
+    "Cam": {
+        "label": "Cambyses II",
+        "conversion": "Q182483",
+        "uri": "https://www.wikidata.org/wiki/Q182483"
+    },
+    "Camb": {
+        "label": "Cambyses II",
+        "conversion": "Q182483",
+        "uri": "https://www.wikidata.org/wiki/Q182483"
+    },
+    "Camb/Cyr": {
+        "label": "Cyrus and Cambyses",
+        "conversion": "cyrus-and-cambyses"
+    },
+    "Cyr": {
+        "label": "Cyrus the Great",
+        "conversion": "Q8423",
+        "uri": "http://www.wikidata.org/entity/Q8423"
+    },
+    "Cyr?": {
+        "label": "Cyrus the Great",
+        "conversion": "Q8423",
+        "uri": "http://www.wikidata.org/entity/Q8423"
+    },
+    "Cyr/Camb": {
+        "label": "Cyrus and Cambyses",
+        "conversion": "cyrus-and-cambyses"
+    },
+    "Dar": {
+        "label": "Darius I",
+        "conversion": "Q44387",
+        "uri": "http://www.wikidata.org/entity/Q44387"
+    },
+    "Dar I": {
+        "label": "Darius I",
+        "conversion": "Q44387",
+        "uri": "http://www.wikidata.org/entity/Q44387"
+    },
+    "DAr": {
+        "label": "Darius I",
+        "conversion": "Q44387",
+        "uri": "http://www.wikidata.org/entity/Q44387"
+    },
+    "dar": {
+        "label": "Darius I",
+        "conversion": "Q44387",
+        "uri": "http://www.wikidata.org/entity/Q44387"
+    },
+    "[Dar]": {
+        "label": "Darius I",
+        "conversion": "Q44387",
+        "uri": "http://www.wikidata.org/entity/Q44387"
+    },
+    "[D]ar": {
+        "label": "Darius I",
+        "conversion": "Q44387",
+        "uri": "http://www.wikidata.org/entity/Q44387"
+    },
+    "Dar 1": {
+        "label": "Darius I",
+        "conversion": "Q44387",
+        "uri": "http://www.wikidata.org/entity/Q44387"
+    },
+    "Dar II": {
+        "label": "Darius II",
+        "conversion": "Q202236",
+        "uri": "http://www.wikidata.org/entity/Q202236"
+    },
+    "DarII": {
+        "label": "Darius II",
+        "conversion": "Q202236",
+        "uri": "http://www.wikidata.org/entity/Q202236"
+    },
+    "darII": {
+        "label": "Darius II",
+        "conversion": "Q202236",
+        "uri": "http://www.wikidata.org/entity/Q202236"
+    },
+    "Dar 2": {
+        "label": "Darius II",
+        "conversion": "Q202236",
+        "uri": "http://www.wikidata.org/entity/Q202236"
+    },
+    "Dar III": {
+        "label": "Darius III",
+        "conversion": "Q102865",
+        "uri": "https://www.wikidata.org/wiki/Q102865"
+    },
+    "Hallu§u": {
+        "label": "Hallushu",
+        "conversion": "hallushu",
+        "uri": "https://cdli.ox.ac.uk/wiki/doku.php?id=hallushu"
+    },
+    "Kam": {
+        "label": "Cambyses II",
+        "conversion": "Q182483",
+        "uri": "https://www.wikidata.org/wiki/Q182483"
+    },
+    "Kamb": {
+        "label": "Cambyses II",
+        "conversion": "Q182483",
+        "uri": "https://www.wikidata.org/wiki/Q182483"
+    },
+    "Kan": {
+        "label": "Kandalanu",
+        "conversion": "Q516329",
+        "uri": "http://www.wikidata.org/entity/Q516329"
+    },
+    "Kand": {
+        "label": "Kandalanu",
+        "conversion": "Q516329",
+        "uri": "http://www.wikidata.org/entity/Q516329"
+    },
+    "Kyr": {
+        "label": "Cyrus the Great",
+        "conversion": "Q8423",
+        "uri": "http://www.wikidata.org/entity/Q8423"
+    },
+    "[Kyr]": {
+        "label": "Cyrus the Great",
+        "conversion": "Q8423",
+        "uri": "http://www.wikidata.org/entity/Q8423"
+    },
+    "kyr": {
+        "label": "Cyrus the Great",
+        "conversion": "Q8423",
+        "uri": "http://www.wikidata.org/entity/Q8423"
+    },
+    "Mu§.-Mar.": {
+        "label": "Mushezib-Marduk",
+        "conversion": "Q878782",
+        "uri": "http://www.wikidata.org/entity/Q878782"
+    },
+    "Ner": {
+        "label": "Neriglissar",
+        "conversion": "Q379716",
+        "uri": "http://www.wikidata.org/entity/Q379716"
+    },
+    "Nbk": {
+        "label": "Nebuchadnezzar II",
+        "conversion": "Q12591",
+        "uri": "http://www.wikidata.org/entity/Q12591"
+    },
+    "[Nbk]": {
+        "label": "Nebuchadnezzar II",
+        "conversion": "Q12591",
+        "uri": "http://www.wikidata.org/entity/Q12591"
+    },
+    "(Nbk)": {
+        "label": "Nebuchadnezzar II",
+        "conversion": "Q12591",
+        "uri": "http://www.wikidata.org/entity/Q12591"
+    },
+    "nbk": {
+        "label": "Nebuchadnezzar II",
+        "conversion": "Q12591",
+        "uri": "http://www.wikidata.org/entity/Q12591"
+    },
+    "NBK": {
+        "label": "Nebuchadnezzar II",
+        "conversion": "Q12591",
+        "uri": "http://www.wikidata.org/entity/Q12591"
+    },
+    "Neb II": {
+        "label": "Nebuchadnezzar II",
+        "conversion": "Q12591",
+        "uri": "http://www.wikidata.org/entity/Q12591"
+    },
+    "NbkIII": {
+        "label": "Nebuchadnezzar III",
+        "conversion": "Q3321618",
+        "uri": "http://www.wikidata.org/entity/Q3321618"
+    },
+    "NbkIV": {
+        "label": "Nebuchadnezzar IV",
+        "conversion": "Q888452",
+        "uri": "http://www.wikidata.org/entity/Q888452"
+    },
+    "Nbn": {
+        "label": "Nabonidus",
+        "conversion": "Q239414",
+        "uri": "http://www.wikidata.org/entity/Q239414"
+    },
+    "<Nbn>": {
+        "label": "Nabonidus",
+        "conversion": "Q239414",
+        "uri": "http://www.wikidata.org/entity/Q239414"
+    },
+    "Nbp": {
+        "label": "Nabopolassar",
+        "conversion": "Q273514",
+        "uri": "http://www.wikidata.org/entity/Q273514"
+    },
+    "Ngl": {
+        "label": "Neriglissar",
+        "conversion": "Q379716",
+        "uri": "http://www.wikidata.org/entity/Q379716"
+    },
+    "Npl": {
+        "label": "Nabopolassar",
+        "conversion": "Q273514",
+        "uri": "http://www.wikidata.org/entity/Q273514"
+    },
+    "npl": {
+        "label": "Nabopolassar",
+        "conversion": "Q273514",
+        "uri": "http://www.wikidata.org/entity/Q273514"
+    },
+    "(Npl)": {
+        "label": "Nabopolassar",
+        "conversion": "Q273514",
+        "uri": "http://www.wikidata.org/entity/Q273514"
+    },
+    "Phi 3": {
+        "label": "Philip III Arrhidaeus",
+        "conversion": "Q295530",
+        "uri": "https://www.wikidata.org/wiki/Q295530"
+    },
+    "Ph Ar": {
+        "label": "Philip III Arrhidaeus",
+        "conversion": "Q295530",
+        "uri": "https://www.wikidata.org/wiki/Q295530"
+    },
+    "§ama§eriba": {
+        "label": "Shamash-eriba",
+        "conversion": "Q77984212",
+        "uri": "http://www.wikidata.org/entity/Q77984212"
+    },
+    "Sar": {
+        "label": "Sargon",
+        "conversion": "Q199461",
+        "uri": "http://www.wikidata.org/entity/Q199461"
+    },
+    "Sel": {
+        "label": "Seleucus I Nicator",
+        "conversion": "Q184176",
+        "uri": "http://www.wikidata.org/entity/Q184176"
+    },
+    "Ssi": {
+        "label": "Sinsharishkun",
+        "conversion": "Q318708",
+        "uri": "http://www.wikidata.org/entity/Q318708"
+    },
+    "SSU": {
+        "label": "Shamash-shum-ukin",
+        "conversion": "Q391038",
+        "uri": "http://www.wikidata.org/entity/Q391038"
+    },
+    "S§I": {
+        "label": "Sinsharishkun",
+        "conversion": "Q318708",
+        "uri": "http://www.wikidata.org/entity/Q318708"
+    },
+    "§§u": {
+        "label": "Shamash-shum-ukin",
+        "conversion": "Q391038",
+        "uri": "http://www.wikidata.org/entity/Q391038"
+    },
+    "§§U": {
+        "label": "Shamash-shum-ukin",
+        "conversion": "Q391038",
+        "uri": "http://www.wikidata.org/entity/Q391038"
+    },
+    "Xer": {
+        "label": "Xerxes I",
+        "conversion": "Q129165",
+        "uri": "http://www.wikidata.org/entity/Q129165"
+    },
+    "-": {},
+    "(Pers.)": {},
+    "(RN)": {},
+    "[...]": {},
+    "[Nbn/Cyr]": {},
+    "AAI": {},
+    "AnM": {},
+    "Art 2 or 3 or 4": {},
+    "Art 2 or Art 3": {},
+    "Asr": {},
+    "BEI": {},
+    "Kak": {},
+    "Nabnasz": {},
+    "Nabu-[?]": {},
+    "Nb-": {},
+    "Nb?": {},
+    "Nbn?": {},
+    "nnn": {},
+    "NNN": {},
+    "Npl-Nbn": {},
+    "SE": {}
+}
