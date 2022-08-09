@@ -23,7 +23,9 @@ vocabularies = dict()
 converters = dict()
 convert_fields = {"king", "regnal-year", "month", "day", "regnal-year-comment"}
 skip_fields = {
-    "archive",
+    "accession-number" "archive",
+    "excavation-number",
+    "extra-date-info",
     "id-in-this-doc",
     "location-written",
     "museum-labels",
@@ -31,6 +33,7 @@ skip_fields = {
     "p-number",
     "provenience",
     "publication-labels",
+    "source-detail",
     "tablet-info-notes",
     "text-content-detail",
 }
@@ -204,6 +207,8 @@ def validate_objects(objs: list, halt_on_error: bool):
             if k in integer_fields:
                 if not isinstance(v, int):
                     raise ValueError("gack")
+                else:
+                    continue
             vocab = get_vocab(k)
             if vocab is not None:
                 try:
