@@ -54,6 +54,13 @@ boolean_fields = {
 }
 boolean_values = {"Yes": True, "x": True, "?": False}
 integer_fields = {"king-order"}
+regex_fields = {
+    "actual-date-attestation": [
+        re.compile(r"^[A-Z][a-z]+( I+)? \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\])$"),
+        re.compile(r"^(Ph Ar|SE) \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\])$"),
+    ],
+    "uri": [re.compile(r"^http://cdli.ucla.edu/P\d+$")],
+}
 
 
 DEFAULT_LOG_LEVEL = logging.WARNING
@@ -172,6 +179,23 @@ def convert_rows(rows: list, fn_crosswalk: dict):
                         clean_v = boolean_values[clean_v]
                     else:
                         clean_v = False
+                else:
+                    try:
+                        rxx = regex_fields[obj_k]
+                    except KeyError:
+                        pass
+                    else:
+                        match = None
+                        for rx in rxx:
+                            match = rx.match(clean_v)
+                            if match is not None:
+                                break
+                        if match is None:
+                            raise ValueError(
+                                f"Value untrapped by regex for {obj_k}: '{clean_v}'"
+                            )
+                        else:
+                            continue
                 if obj_k in convert_fields:
                     logger.debug(f"{obj_k} before: {clean_v}")
                     clean_v = convert_field(obj_k, clean_v)
