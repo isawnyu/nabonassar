@@ -45,6 +45,14 @@ skip_fields = {
     "tablet-info-notes",
     "text-content-detail",
 }
+boolean_fields = {
+    "is-last-day-of-month",
+    "relevant-to-month-length",
+    "relevant-to-reigns",
+    "relevant-to-year-length",
+    "doesn-t-seem-relevant",
+}
+boolean_values = {"Yes": True, "x": True, "?": False}
 integer_fields = {"king-order"}
 
 
@@ -149,8 +157,8 @@ def convert_rows(rows: list, fn_crosswalk: dict):
         obj = dict()
         for k, v in row.items():
             clean_v = " ".join(v.strip().split())
-            if clean_v:
-                obj_k = fn_crosswalk[k]
+            obj_k = fn_crosswalk[k]
+            if clean_v or obj_k in boolean_fields:
                 if obj_k in integer_fields:
                     try:
                         clean_v = int(clean_v)
@@ -159,6 +167,11 @@ def convert_rows(rows: list, fn_crosswalk: dict):
                             f"Unexpected non-integer value for field '{k}' in row {i}: '{clean_v}'"
                         )
                         continue
+                elif obj_k in boolean_fields:
+                    if clean_v:
+                        clean_v = boolean_values[clean_v]
+                    else:
+                        clean_v = False
                 if obj_k in convert_fields:
                     logger.debug(f"{obj_k} before: {clean_v}")
                     clean_v = convert_field(obj_k, clean_v)
@@ -215,6 +228,11 @@ def validate_objects(objs: list, halt_on_error: bool):
             if k in integer_fields:
                 if not isinstance(v, int):
                     raise ValueError("gack")
+                else:
+                    continue
+            elif k in boolean_fields:
+                if not isinstance(v, bool):
+                    raise ValueError("gork")
                 else:
                     continue
             vocab = get_vocab(k)
