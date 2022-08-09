@@ -21,9 +21,17 @@ from slugify import slugify
 logger = logging.getLogger(__name__)
 vocabularies = dict()
 converters = dict()
-convert_fields = {"king", "regnal-year", "month", "day", "regnal-year-comment"}
+convert_fields = {
+    "day",
+    "king",
+    "month",
+    "observed-predicted",
+    "regnal-year-comment",
+    "regnal-year",
+}
 skip_fields = {
-    "accession-number" "archive",
+    "accession-number",
+    "archive",
     "excavation-number",
     "extra-date-info",
     "id-in-this-doc",

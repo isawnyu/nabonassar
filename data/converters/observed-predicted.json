@@ -1,0 +1,38 @@
+{
+    "u": {
+        "conversion": "u-UNDEFINED"
+    },
+    "broken": {
+        "conversion": "broken"
+    },
+    "p": {
+        "conversion": "predicted"
+    },
+    "o": {
+        "conversion": "observed"
+    },
+    "?": {
+        "conversion": "uncertain"
+    },
+    "r": {
+        "conversion": "r-UNDEFINED"
+    },
+    "u?": {
+        "conversion": "u?-UNDEFINED"
+    },
+    "o?": {
+        "conversion": "observed-uncertain"
+    },
+    "o/p?": {
+        "conversion": "uncertain"
+    },
+    "o/p": {
+        "conversion": "uncertain"
+    },
+    "O": {
+        "conversion": "observed"
+    },
+    "brokwn": {
+        "conversion": "broken"
+    }
+}
