@@ -129,7 +129,7 @@ def get_converter(fieldname):
             logger.warning(f"No converter defined for fieldname '{fieldname}'.")
             converters[fieldname] = None
         else:
-            logger.warning(f"Loading from file: converter for {fieldname}.")
+            logger.info(f"Loading from file: converter for {fieldname}.")
             raw_converter = json.load(vfp)
             vfp.close()
             del vfp
@@ -160,6 +160,7 @@ def convert_field(fieldname, value):
 def convert_rows(rows: list, fn_crosswalk: dict):
     """Convert a list of dictionaries to a list of JSON-compatible objects using the crosswalk"""
     objs = list()
+    integer_failures = set()
     for i, row in enumerate(rows):
         obj = dict()
         for k, v in row.items():
@@ -170,9 +171,11 @@ def convert_rows(rows: list, fn_crosswalk: dict):
                     try:
                         clean_v = int(clean_v)
                     except ValueError:
-                        logger.error(
-                            f"Unexpected non-integer value for field '{k}' in row {i}: '{clean_v}'"
-                        )
+                        if clean_v not in integer_failures:
+                            logger.error(
+                                f"Unexpected non-integer value for field '{k}' in row {i}: '{clean_v}' (repeats will not be logged)"
+                            )
+                            integer_failures.add(clean_v)
                         continue
                 elif obj_k in boolean_fields:
                     if clean_v:
@@ -232,6 +235,7 @@ def get_vocab(fieldname: str):
             logger.warning(f"No vocabulary defined for fieldname '{fieldname}'.")
             vocabularies[fieldname] = None
         else:
+            logger.info(f"Loading from file: vocabulary for {fieldname}.")
             raw_vocab = json.load(vfp)
             vfp.close()
             del vfp
@@ -280,7 +284,7 @@ def main(**kwargs):
         reader = csv.DictReader(fp)
         rows = [r for r in reader]
     del fp
-    logger.debug(f"rows: {len(rows)}")
+    logger.info(f"read {len(rows)} data rows from file")
     fieldnames = list(rows[0].keys())
     logger.debug(f"fieldnames: {fieldnames}")
     fn_csv2json = normalize_fieldnames(fieldnames)
@@ -298,6 +302,7 @@ def main(**kwargs):
         sort_keys = False
     s = json.dumps(objs, ensure_ascii=False, indent=indent, sort_keys=sort_keys)
     print(s)
+    logger.info(f"wrote {len(objs)} data objects to stdout")
 
 
 if __name__ == "__main__":
