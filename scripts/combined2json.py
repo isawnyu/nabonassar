@@ -197,8 +197,6 @@ def convert_rows(rows: list, fn_crosswalk: dict):
                             raise ValueError(
                                 f"Value untrapped by regex for {obj_k}: '{clean_v}'"
                             )
-                        else:
-                            continue
                 if obj_k in convert_fields:
                     logger.debug(f"{obj_k} before: {clean_v}")
                     clean_v = convert_field(obj_k, clean_v)
@@ -263,6 +261,8 @@ def validate_objects(objs: list, halt_on_error: bool):
                     raise ValueError("gork")
                 else:
                     continue
+            elif k in regex_fields:
+                continue
             vocab = get_vocab(k)
             if vocab is not None:
                 try:
