@@ -8,7 +8,7 @@
 Convert 'combined' data in CSV+UTF8 to JSON with basic cleanup
 """
 
-from curses import raw
+from csv import DictWriter
 from airtight.cli import configure_commandline
 import csv
 import json
@@ -89,10 +89,12 @@ OPTIONAL_ARGUMENTS = [
         "very verbose output (logging level == DEBUG)",
         False,
     ],
+    ["-f", "--format", "json", "output format (json or csv)", False],
 ]
 POSITIONAL_ARGUMENTS = [
     # each row is a list with 3 elements: name, type, help
-    ["from", str, "source CSV file"]
+    ["from", str, "source CSV file"],
+    ["to", str, "destination filename"],
 ]
 
 
@@ -294,14 +296,28 @@ def main(**kwargs):
     objs = convert_rows(rows, fn_csv2json)
     validate_objects(objs, kwargs["halt"])
 
-    if kwargs["pretty"]:
-        indent = 4
-        sort_keys = True
+    if kwargs["format"] == "json":
+        if kwargs["pretty"]:
+            indent = 4
+            sort_keys = True
+        else:
+            indent = None
+            sort_keys = False
+        with open(kwargs["to"], "w", encoding="utf-8") as fp:
+            json.dump(objs, fp, ensure_ascii=False, indent=indent, sort_keys=sort_keys)
+        del fp
+    elif kwargs["format"] == "csv":
+        fieldnames = set()
+        for obj in objs:
+            fieldnames.update(list(obj.keys()))
+        with open(kwargs["to"], "w", encoding="utf-8-sig") as fp:
+            writer = csv.DictWriter(fp, fieldnames=fieldnames)
+            writer.writeheader()
+            for obj in objs:
+                writer.writerow(obj)
+        del fp
     else:
-        indent = None
-        sort_keys = False
-    s = json.dumps(objs, ensure_ascii=False, indent=indent, sort_keys=sort_keys)
-    print(s)
+        raise ValueError(f"No support for format={kwargs['format']}")
     logger.info(f"wrote {len(objs)} data objects to stdout")
 
 
