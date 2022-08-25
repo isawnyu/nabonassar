@@ -12,7 +12,7 @@ from airtight.cli import configure_commandline
 import json
 import logging
 from pathlib import Path
-from pprint import pformat
+from pprint import pformat, pprint
 
 logger = logging.getLogger(__name__)
 
@@ -61,7 +61,16 @@ def main(**kwargs):
             try:
                 docdata[fn]
             except KeyError:
-                logger.warning(f"No '{fn}' field in docdata for docid = {docid}")
+                try:
+                    comment = docdata[f"{fn}-comment"]
+                except KeyError:
+                    comment = None
+                else:
+                    skip = True
+                    break
+                logger.warning(
+                    f"No '{fn}' field in docdata for docid = {docid} and comment == '{comment}'"
+                )
                 skip = True
                 break
             try:
@@ -72,23 +81,32 @@ def main(**kwargs):
                 skip = True
                 break
         if not skip:
-            d = dates
-            for i, fn in enumerate(fieldnames):
-                k = docdata[fn]
-                try:
-                    d[k]
-                except KeyError:
-                    if i < len(fieldnames) - 1:
-                        d[k] = dict()
-                    else:
-                        d[k] = set()
-                if isinstance(d[k], dict):
-                    d = d[k]
-                elif isinstance(d[k], set):
-                    d[k].add(docid)
-                else:
-                    raise RuntimeError("kerblooee")
-    logger.debug(pformat(dates, indent=4))
+            try:
+                dates[docdata["king"]]
+            except KeyError:
+                dates[docdata["king"]] = dict()
+            finally:
+                era = dates[docdata["king"]]
+            try:
+                era[docdata["regnal-year"]]
+            except KeyError:
+                era[docdata["regnal-year"]] = dict()
+            finally:
+                year = era[docdata["regnal-year"]]
+            try:
+                year[docdata["month"]]
+            except KeyError:
+                year[docdata["month"]] = dict()
+            finally:
+                month = year[docdata["month"]]
+            try:
+                month[docdata["day"]]
+            except KeyError:
+                month[docdata["day"]] = list()
+            finally:
+                month[docdata["day"]].append(docid)
+
+    pprint(dates, indent=4)
 
 
 if __name__ == "__main__":
