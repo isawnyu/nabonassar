@@ -405,6 +405,11 @@
         "conversion": "Q129165",
         "uri": "http://www.wikidata.org/entity/Q129165"
     },
+    "SE": {
+        "label": "Seleucid Era",
+        "conversion": "Q1887711",
+        "uri": "https://www.wikidata.org/wiki/Q1887711"
+    },
     "-": {},
     "(Pers.)": {},
     "(RN)": {},
@@ -424,6 +429,5 @@
     "Nbn?": {},
     "nnn": {},
     "NNN": {},
-    "Npl-Nbn": {},
-    "SE": {}
+    "Npl-Nbn": {}
 }
