@@ -5,9 +5,33 @@ Data pre-processing for the Shanati project.
 ## Ingest Data
 
 1. Export "combined" dataset from excel to CSV UTF-8.
-2. Run `python scripts/combined2json.py ~/Documents/files/S/shanati/data/combined_v4.csv data/clean_v4.json`.
+2. Run `python scripts/combined2json.py --pretty ~/somewhere/combined_v4.csv ~/somethere/clean_v4.json`.
+
+```
+$ python scripts/combined2json.py -h
+usage: combined2json.py [-h] [-x] [-l LOGLEVEL] [-p] [-v] [-w] [-f FORMAT] from to
+
+Convert 'combined' data in CSV+UTF8 to JSON with basic cleanup
+
+positional arguments:
+  from                  source CSV file
+  to                    destination filename
+
+options:
+  -h, --help            show this help message and exit
+  -x, --halt            halt on validation or other major error (default: False)
+  -l LOGLEVEL, --loglevel LOGLEVEL
+                        desired logging level (case-insensitive string: DEBUG, INFO,
+                        WARNING, or ERROR (default: NOTSET)
+  -p, --pretty          pretty-print the output JSON for easy readability (default:
+                        False)
+  -v, --verbose         verbose output (logging level == INFO) (default: False)
+  -w, --veryverbose     very verbose output (logging level == DEBUG) (default: False)
+  -f FORMAT, --format FORMAT
+                        output format (json or csv) (default: json)
+```
 
 ## Extract Attested Dates
 
-`python scripts/attestations.py data/clean_v4.json`
+`python scripts/attestations.py ~/somewhere/clean_v4.json`
 
