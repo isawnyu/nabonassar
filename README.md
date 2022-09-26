@@ -4,13 +4,16 @@ Data pre-processing for the Shanati project.
 
 ## Install
 
-1. Create and activate a python virtual environment. Module has been tested under python 3.10.6.
-2. Install dependencies:
+1. Fork this repository then clone to your local context.
+2. Create and activate a python virtual environment. Module has been tested under python 3.10.6.
+3. Change working directory to the local clone and then install dependencies:
 
 ```
 $ pip install -U pip
 $ pip install -U -r requirements_dev.txt
 ```
+
+All dev and runtime dependencies will be installed. This module will be installed in "editable" fashion, so that local modifications can be tested immediately.
 
 ## Ingest Data
 
