@@ -61,6 +61,7 @@ regex_fields = {
     ],
     "uri": [re.compile(r"^http://cdli.ucla.edu/P\d+$")],
 }
+dedupe_fields = {"museum-labels", "publication-labels"}
 
 
 DEFAULT_LOG_LEVEL = logging.WARNING
@@ -277,6 +278,50 @@ def validate_objects(objs: list, halt_on_error: bool):
                         logger.error(msg)
 
 
+def check_duplicates(objs: list):
+    index = dict()
+    obj_lookup = dict()
+    for obj in objs:
+        for k in dedupe_fields:
+            try:
+                labels = obj[k]
+            except KeyError:
+                continue
+            if isinstance(labels, str):
+                labels = [
+                    labels,
+                ]
+            for label in labels:
+                slug = slugify(label)
+                try:
+                    index[slug]
+                except KeyError:
+                    index[slug] = {
+                        obj["id-in-this-doc"],
+                    }
+                else:
+                    index[slug].add(obj["id-in-this-doc"])
+            obj_lookup[obj["id-in-this-doc"]] = obj
+    concerns = {slug: matches for slug, matches in index.items() if len(matches) > 1}
+    for slug, matches in concerns.items():
+        msg = [
+            f"POSSIBLE DUPLICATES: the following {len(matches)} rows produced the same label slug '{slug}'",
+        ]
+        for match in matches:
+            obj = obj_lookup[match]
+            line = [f"\tID {obj['id-in-this-doc']}"]
+            for k in dedupe_fields:
+                try:
+                    labels = obj[k]
+                except KeyError:
+                    continue
+                else:
+                    line.append(f"{k} = {labels}")
+            msg.append(" : ".join(line))
+        msg = "\n".join(msg)
+        logger.error(msg)
+
+
 def main(**kwargs):
     """
     main function
@@ -295,6 +340,7 @@ def main(**kwargs):
     )
     objs = convert_rows(rows, fn_csv2json)
     validate_objects(objs, kwargs["halt"])
+    check_duplicates(objs)
 
     if kwargs["format"] == "json":
         if kwargs["pretty"]:
