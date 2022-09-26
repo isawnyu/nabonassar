@@ -2,6 +2,16 @@
 
 Data pre-processing for the Shanati project.
 
+## Install
+
+1. Create a python virtual environment. Module has been tested under python 3.10.6.
+2. Install dependencies:
+
+```
+$ pip install -U pip
+$ pip install -U -r requirements_dev.txt
+```
+
 ## Ingest Data
 
 1. Export "combined" dataset from excel to CSV UTF-8.
