@@ -4,7 +4,7 @@ Data pre-processing for the Shanati project.
 
 ## Install
 
-1. Create a python virtual environment. Module has been tested under python 3.10.6.
+1. Create and activate a python virtual environment. Module has been tested under python 3.10.6.
 2. Install dependencies:
 
 ```
