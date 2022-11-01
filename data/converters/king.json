@@ -9,6 +9,11 @@
         "conversion": "Q8409",
         "uri": "http://www.wikidata.org/entity/Q8409"
     },
+    "Alex IV": {
+        "label": "Alexander the Great",
+        "conversion": "Q8409",
+        "uri": "http://www.wikidata.org/entity/Q8409"
+    },
     "Alx 4": {
         "label": "Alexander IV",
         "conversion": "Q207847",
@@ -351,6 +356,11 @@
         "uri": "http://www.wikidata.org/entity/Q273514"
     },
     "Phi 3": {
+        "label": "Philip III Arrhidaeus",
+        "conversion": "Q295530",
+        "uri": "https://www.wikidata.org/wiki/Q295530"
+    },
+    "Phil III": {
         "label": "Philip III Arrhidaeus",
         "conversion": "Q295530",
         "uri": "https://www.wikidata.org/wiki/Q295530"
