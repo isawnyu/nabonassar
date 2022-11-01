@@ -52,12 +52,18 @@ boolean_fields = {
     "relevant-to-year-length",
     "doesn-t-seem-relevant",
 }
-boolean_values = {"Yes": True, "x": True, "?": False}
+boolean_values = {"Yes": True, "x": True, "?": False, "TRUE": True}
 integer_fields = {"king-order"}
 regex_fields = {
     "actual-date-attestation": [
         re.compile(r"^[A-Z][a-z]+( I+)? \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\])$"),
+        re.compile(
+            r"^[A-Z][a-z]+( I+)? \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\]) = (I+|I?V|VI+|I?X|XI+)2? \d+$"
+        ),
         re.compile(r"^(Ph Ar|SE) \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\])$"),
+        # re.compile(
+        #    r"^(Nbk) \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\]) = (I 30|II 29|IX 30|X 29|XII2 29)$"
+        # ),
     ],
     "uri": [re.compile(r"^http://cdli.ucla.edu/P\d+$")],
 }
