@@ -56,11 +56,20 @@ boolean_values = {"Yes": True, "x": True, "?": False, "TRUE": True}
 integer_fields = {"king-order"}
 regex_fields = {
     "actual-date-attestation": [
-        re.compile(r"^[A-Z][a-z]+( I+)? \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\])$"),
         re.compile(
-            r"^[A-Z][a-z]+( I+)? \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\]) = (I+|I?V|VI+|I?X|XI+)2? \d+$"
+            r"^[A-Z][a-z]+( (I+|IV))? \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\])$"
+        ),
+        re.compile(
+            r"^[A-Z][a-z]+( (I+|IV))? \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\]) = (I+|I?V|VI+|I?X|XI+)2? \d+$"
         ),
         re.compile(r"^(Ph Ar|SE) \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\])$"),
+        re.compile(
+            r"^(Ph Ar|SE) \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\]) = (I+|I?V|VI+|I?X|XI+)2? \d+$"
+        ),
+        re.compile(
+            r"^SE \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\]) = SE \d+ (I+|I?V|VI+|I?X|XI+)2? \d+$"
+        ),
+        re.compile(r"^SE \d+ (I+|I?V|VI+|I?X|XI+)2? = (I+|I?V|VI+|I?X|XI+)2? \d+$"),
         # re.compile(
         #    r"^(Nbk) \d+ (I+|I?V|VI+|I?X|XI+)2? (\d+\??|\[\d+\]) = (I 30|II 29|IX 30|X 29|XII2 29)$"
         # ),
